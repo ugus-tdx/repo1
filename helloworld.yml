@@ -1,10 +1,4 @@
-# .semaphore/semaphore.yml
-version: v1.0
-name: Hello World from Webhook
-
-
-# This block defines a group of jobs
-blocks:
+---
   - name: "Say Hello"
     task:
       jobs:
