@@ -2,18 +2,6 @@
 version: v1.0
 name: Hello World from Webhook
 
-# Define a parameter that can customize the greeting
-parameters:
-  - name: greeting_target
-    type: string
-    required: false # Meaning it can be omitted
-    default: "World" # A default value if the parameter is not provided
-
-# Define the machine where jobs will run
-agent:
-  machine:
-    type: e1-standard-2 # A standard, small machine type
-    os_image: ubuntu1804 # Operating system image
 
 # This block defines a group of jobs
 blocks:
