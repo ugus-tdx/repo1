@@ -1,10 +1,9 @@
 ---
-  - name: "Say Hello"
-    task:
-      jobs:
-        - name: "Echo Greeting"
-          commands:
-            # Use the 'greeting_target' parameter in the command
-            - echo "Hello, {{ parameters.greeting_target }} from SemaphoreCI!"
-            - sleep 2 # Simulate a short task
-            - echo "Greeting job finished."
+- name: Network Getting Started First Playbook
+  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  hosts: localhost
+  tasks:
+    - name: Display the config
+      debug:
+        msg: "Hello darkness my old friend"
