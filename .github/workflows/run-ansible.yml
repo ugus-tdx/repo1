@@ -9,7 +9,7 @@ on:
   # This allows triggering the workflow via a custom HTTP POST request (the webhook part).
   # Keep it commented out for the "fastest hello world" initial test, we'll enable it later.
   # repository_dispatch:
-  #   types: [run_hello_ansible] # Define a custom event type for your webhook
+types: [run_hello_ansible] # Define a custom event type for your webhook
 
 jobs:
   run_ansible_playbook:
