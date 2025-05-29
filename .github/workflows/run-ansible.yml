@@ -1,0 +1,33 @@
+# .github/workflows/run-ansible.yml
+name: Run Ansible Hello World
+
+on:
+  # This allows you to trigger the workflow manually from the GitHub Actions UI.
+  # This is the "fastest 'hello world'" part for initial testing.
+  workflow_dispatch:
+
+  # This allows triggering the workflow via a custom HTTP POST request (the webhook part).
+  # Keep it commented out for the "fastest hello world" initial test, we'll enable it later.
+  # repository_dispatch:
+  #   types: [run_hello_ansible] # Define a custom event type for your webhook
+
+jobs:
+  run_ansible_playbook:
+    runs-on: ubuntu-latest # Use the latest Ubuntu environment provided by GitHub
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4 # This action checks out your repository code
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 # This action sets up Python on the runner
+        with:
+          python-version: '3.x' # Use a recent Python 3 version
+
+      - name: Install Ansible
+        run: | # The | allows for multi-line commands
+          python -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Run Ansible 'Hello World' Playbook
+        run: ansible-playbook helloworld.yml # Execute your playbook
