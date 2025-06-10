@@ -1,0 +1,23 @@
+---
+
+- name: Restart Apache on Debian 12
+  #  connection: ansible.netcommon.network_cli
+  gather_facts: false
+  hosts: FedexPradera
+  become: yes
+  tasks:
+    - name: Check effective user
+      ansible.builtin.command: whoami
+      register: whoami_output
+    - ansible.builtin.debug:
+        var: whoami_output.stdout
+    - name: Who am I as become user?
+      ansible.builtin.command: whoami
+      register: become_user_test
+    - ansible.builtin.debug:
+        var: become_user_test.stdout
+
+    - name: Restart apache2 service
+      ansible.builtin.service:    
+          name: apache2
+          state: restarted
